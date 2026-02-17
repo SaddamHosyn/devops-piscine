@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -iregex '.*\.\(txt\)' | cut -d '/' -f 3
+find . -iregex '.*\.\(txt\)' -printf '%f\n'
