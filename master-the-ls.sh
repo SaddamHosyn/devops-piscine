@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -tupl | tr '\n' ',' | sed 's/,$//'
+ls -tup | tr '\n' ',' | sed 's/,$//'
