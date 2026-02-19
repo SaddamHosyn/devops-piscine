@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [[ $# -lt 2 ]]; then
     echo "Error: two numbers must be provided"
     exit 1
@@ -9,7 +10,7 @@ if ! echo "$1" | grep -qE '^-?[0-9]+$' || ! echo "$2" | grep -qE '^-?[0-9]+$'; t
     exit 1
 fi
 
-if [[ "$2" == "0" ]]; then
+if [[ $(echo "$2 == 0" | bc) -eq 1 ]]; then
     echo "Error: division by zero is not allowed"
     exit 1
 fi
