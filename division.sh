@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 if (( $# < 2 )); then
     echo "Error: two numbers must be provided"
     exit 1
