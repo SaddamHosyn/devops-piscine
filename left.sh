@@ -1,2 +1,2 @@
 #!/bin/bash
-wc -l < facts.txt
+wc -l < input.txt
