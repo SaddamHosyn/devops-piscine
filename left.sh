@@ -1,2 +1,2 @@
 #!/bin/bash
-wc -l < input.txt
+wc -l < file.txt
