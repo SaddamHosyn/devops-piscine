@@ -1,16 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [[ $# -ne 1 ]]; then
-    echo "Error"
-    exit 1
+IFS='
+'
+
+COLORS=('red' 'blue' 'green' 'white' 'black')
+if [[ ! $1 =~ ^[0-9]+$ ]] || [[ $1 -le 0 ]] || [[ $1 -gt ${#COLORS[@]} ]]; then
+	echo 'Error'
+else
+	POS=$(($1 - 1))
+	echo ${COLORS[$POS]}
 fi
-if [[ ! $1 =~ ^[0-9]+$ ]]; then
-    echo "Error"
-    exit 1
-fi
-if [[ $1 -lt 1 ]] || [[ $1 -gt ${#array[@]} ]]; then
-    echo "Error"
-    exit 1
-fi
-array=("red" "blue" "green" "white" "black")
-echo ${array[$(( $1 - 1 ))]}
