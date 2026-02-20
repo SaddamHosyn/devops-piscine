@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 array=("red" "blue" "green" "white" "black")
 if [[ $# -ne 1 ]]; then
     echo "Error"
