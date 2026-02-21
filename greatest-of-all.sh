@@ -9,7 +9,7 @@ for i in $(seq 1 10); do
     fi
 
     if [ "$num" -gt 10000 ]; then
-        echo "Too large!"
+        echo "ERROR: The number entered is too large"
         exit 1
     fi
 
