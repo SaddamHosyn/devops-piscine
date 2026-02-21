@@ -4,7 +4,7 @@ for i in $(seq 1 10); do
     read -p "Enter a number: " num
 
     if [[ ! $num =~ ^[0-9]+$ ]]; then
-        echo "Not a valid positive number!"
+        echo "ERROR: Invalid input only positive numerical characters are allowed"
         exit 1
     fi
 
