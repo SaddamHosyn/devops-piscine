@@ -1,7 +1,7 @@
 #!/bin/bash
 if [[ $# -ne 2 ]]; then
     echo "Error: The script only works with two arguments!"
-elif [[ ! $1 =~ ^[0-9]+$ ]] || [[ ! $2 =~ ^[0-9]+$ ]]; then
+elif [[ ! $1 =~ ^-?[0-9]+$ ]] || [[ ! $2 =~ ^-?[0-9]+$ ]]; then
     echo "Error: Only two numeric arguments are acceptable!"
 elif [[ $1 -eq $2 ]]; then
     echo "$1 = $2"
