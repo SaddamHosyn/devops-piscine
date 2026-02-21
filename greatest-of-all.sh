@@ -17,4 +17,4 @@ for i in $(seq 1 10); do
         max=$num
     fi
 done
-echo "Current max is: $max"
+echo "The largest number is: $max"
