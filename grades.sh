@@ -6,7 +6,7 @@
 # Print error to stderr using 1>&2 and exit 1
 
 if [[ $# -ne 1 ]]; then
-    echo "Error: wrong argument" >&2
+    echo "Error: expect 1 argument only!" >&2
     exit 1
 fi
 
