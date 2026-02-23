@@ -16,16 +16,16 @@
 
 
 if [[ $# -ne 1 ]]; then
-      echo "Error: wrong argument" >&2
+      echo "Error: wrong argument"
       exit 1
    
 elif [[ ! $1 =~ ^[0-9]+$ ]]; then
-      echo "Error: wrong argument" >&2
+      echo "Error: wrong argument"
       exit 1
 elif [[ $1 -lt 1 || $1 -gt 100 ]]; then
-      echo "Error: wrong argument" >&2
+      echo "Error: wrong argument"
       exit 1
-   fi
+fi
 #######################################
 # 2. Store the secret number
 #######################################
