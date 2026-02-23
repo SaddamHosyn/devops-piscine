@@ -1,43 +1,48 @@
 #!/bin/bash
 
-if [[ $# != 1 ||
-	-z "$1" ||
-	! "$1" =~ ^[0-9]+$ ||
-	"$1" -lt 1 ||
-	"$1" -gt 100 ]]; then
-	echo "Error: wrong argument"
-	exit 1
+#######################################
+# 1. Validate arguments
+#######################################
+
+if [[ $# -ne 1 || -z "$1" || ! "$1" =~ ^[0-9]+$ || "$1" -lt 1 || "$1" -gt 100 ]]; then
+    echo "Error: wrong argument"
+    exit 1
 fi
 
-number=$1
+#######################################
+# 2. Store the secret number
+#######################################
 
-# Start the for loop for player two
-for ((tries_left = 5; tries_left > 0; tries_left--)); do
-	echo "Enter your guess ($tries_left tries left):"
+secret="$1"
 
-	read guess
-	if [[ $? -lt 0 ]]; then
-		exit 1
-	fi
+#######################################
+# 3. Game loop (5 tries) using for
+#######################################
 
-	if [[ -z "$guess" ||
-		! "$guess" =~ ^[0-9]+$ ||
-		"$guess" -lt 1 ||
-		"$guess" -gt 100 ]]; then
-		tries_left=$tries_left+1
-		continue
-	fi
+valid_tries=0
+while [[ $valid_tries -lt 5 ]]; do
+    tries_left=$((5 - valid_tries))
+    echo "Enter your guess (${tries_left} tries left):"
+    read guess
 
-	if [[ "$guess" -eq "$number" ]]; then
-		echo "Congratulations, you found the number in $((5 - $tries_left + 1)) moves!"
-		exit
-	fi
+    # Validate guess
+    if [[ -z "$guess" || ! "$guess" =~ ^[0-9]+$ || "$guess" -lt 1 || "$guess" -gt 100 ]]; then
+        continue  # invalid input, do not count as a try
+    fi
 
-	if [[ "$guess" -lt "$number" ]]; then
-		echo "Go up"
-	else
-		echo "Go down"
-	fi
+    valid_tries=$((valid_tries + 1))
+    if [[ "$guess" -gt "$secret" ]]; then
+        echo "Go down"
+    elif [[ "$guess" -lt "$secret" ]]; then
+        echo "Go up"
+    else
+        echo "Congratulations, you found the number in ${valid_tries} moves!"
+        exit 0
+    fi
 done
 
-echo "You lost, the number was $number"
+#######################################
+# 4. If we reach here, player lost
+#######################################
+
+echo "You lost, the number was $secret"
