@@ -32,8 +32,7 @@ fi
 
 # TODO: If validation passed, store $1 in a variable, e.g.:
 # secret="$1"
-    RANDOM=12  # Seed for reproducible secret=12 matching tests
-    secret=$((RANDOM % 100 + 1))
+    secret=$1
 
 
 
