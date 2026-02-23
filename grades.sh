@@ -26,38 +26,34 @@ fi
 # STEP 3: Initialize counters for student loop
 # Hint: Use a for loop with sequence from 1 to number of students
 
-for ((i = 1; i <= student_count; i++)); do
-    
-    read -p "Student Name #$i: " name
-      read -p "Student Grade #$i: " grade
 
-echo "$evaluation"
-    if [[ ! "$name" =~ ^[a-zA-Z]+$ ]]; then
-        echo "Error: wrong argument" >&2
-        exit 1
-    fi
+# STEP 3: Initialize counters for student loop
+# Hint: Use a for loop with sequence from 1 to number of students
+
+declare -a students
+for ((i = 1; i <= student_count; i++)); do
+    read -p "Student Name #$i: " name
+    read -p "Student Grade #$i: " grade
+    students+=("$name $grade")
 
     if [[ ! "$grade" =~ ^[0-9]+$ ]] || [[ "$grade" -lt 0 || "$grade" -gt 100 ]]; then
         echo "Error: wrong argument" >&2
         exit 1
     fi
+done
 
-    label="$name"
-    if [[ -z "$name" ]]; then
-        label="Student$i"
-    fi
-
+for student in "${students[@]}"; do
+    name=$(echo $student | awk '{print $1}')
+    grade=$(echo $student | awk '{print $2}')
     if [[ "$grade" -ge 90 ]]; then
-        evaluation="$label: You did an excellent job!"
+        echo "$name: You did an excellent job!"
     elif [[ "$grade" -ge 70 ]]; then
-        evaluation="$label: You did a good job!"
+        echo "$name: You did a good job!"
     elif [[ "$grade" -ge 50 ]]; then
-        evaluation="$label: You need a bit more effort!"
+        echo "$name: You need a bit more effort!"
     else
-        evaluation="$label: You had a poor performance!"
+        echo "$name: You had a poor performance!"
     fi
-
-    echo "$evaluation"
 done
 
 
