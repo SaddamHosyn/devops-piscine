@@ -32,7 +32,7 @@ fi
 
 # TODO: If validation passed, store $1 in a variable, e.g.:
 # secret="$1"
-     secret="$1"
+    secret=$((RANDOM % 100 + 1))
 
 
 
@@ -57,14 +57,13 @@ for i in {1..5}; do
    valid_tries=$((valid_tries + 1))
    if [[ $guess -gt $secret ]]; then
       echo "Go down"
-   elif [[ $guess -lt $secret ]]; then
+   elif [[ $guess -lt $secret ]]; then  # Use elif to match diff's single outputs [web:1]
       echo "Go up"
    else
       echo "Congratulations, you found the number in ${valid_tries} moves!"
       exit 0
    fi
-done
-
+done 
 
 
 
