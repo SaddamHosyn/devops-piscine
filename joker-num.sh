@@ -19,25 +19,22 @@ secret="$1"
 # 3. Game loop (5 tries) using for
 #######################################
 
-valid_tries=0
-while [[ $valid_tries -lt 5 ]]; do
-    tries_left=$((5 - valid_tries))
-    echo "Enter your guess (${tries_left} tries left):"
+for ((tries_left = 5; tries_left > 0; tries_left--)); do
+    echo "Enter your guess ($tries_left tries left):"
     read guess
 
-    # Validate guess
     if [[ -z "$guess" || ! "$guess" =~ ^[0-9]+$ || "$guess" -lt 1 || "$guess" -gt 100 ]]; then
-        continue  # invalid input, do not count as a try
+        tries_left=$((tries_left + 1))  # Don't count invalid input
+        continue
     fi
 
-    valid_tries=$((valid_tries + 1))
-    if [[ "$guess" -gt "$secret" ]]; then
-        echo "Go down"
+    if [[ "$guess" -eq "$secret" ]]; then
+        echo "Congratulations, you found the number in $((6 - tries_left)) moves!"
+        exit 0
     elif [[ "$guess" -lt "$secret" ]]; then
         echo "Go up"
     else
-        echo "Congratulations, you found the number in ${valid_tries} moves!"
-        exit 0
+        echo "Go down"
     fi
 done
 
