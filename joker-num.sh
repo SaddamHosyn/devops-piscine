@@ -5,7 +5,7 @@
 #######################################
 
 if [[ $# -ne 1 || -z "$1" || ! "$1" =~ ^[0-9]+$ || "$1" -lt 1 || "$1" -gt 100 ]]; then
-    echo "Error: wrong argument" >&2
+    echo "Error: wrong argument"
     exit 1
 fi
 
