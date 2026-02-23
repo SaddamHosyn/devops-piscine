@@ -37,7 +37,7 @@ for ((i = 1; i <= student_count; i++)); do
     students+=("$name $grade")
 
     if [[ ! "$grade" =~ ^[0-9]+$ ]] || [[ "$grade" -lt 0 || "$grade" -gt 100 ]]; then
-        echo "Error: wrong argument" >&2
+        echo "Error: The grade '$grade' is not a valid input. Only numerical grades between 0 and 100 are accepted." >&2
         exit 1
     fi
 done
