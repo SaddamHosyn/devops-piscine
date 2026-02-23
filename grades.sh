@@ -32,7 +32,7 @@ for ((i = 1; i <= student_count; i++)); do
       read -p "Student Grade #$i: " grade
 
 echo "$evaluation"
-   if [[ ! "$name" =~ ^[a-zA-Z]+$ ]]; then
+    if [[ ! "$name" =~ ^[a-zA-Z]+$ ]]; then
         echo "Error: wrong argument" >&2
         exit 1
     fi
@@ -42,14 +42,19 @@ echo "$evaluation"
         exit 1
     fi
 
+    label="$name"
+    if [[ -z "$name" ]]; then
+        label="Student$i"
+    fi
+
     if [[ "$grade" -ge 90 ]]; then
-        evaluation="Student$i: You did an excellent job!"
+        evaluation="$label: You did an excellent job!"
     elif [[ "$grade" -ge 70 ]]; then
-        evaluation="Student$i: You did a good job!"
+        evaluation="$label: You did a good job!"
     elif [[ "$grade" -ge 50 ]]; then
-        evaluation="Student$i: You need a bit more effort!"
+        evaluation="$label: You need a bit more effort!"
     else
-        evaluation="Student$i: You had a poor performance!"
+        evaluation="$label: You had a poor performance!"
     fi
 
     echo "$evaluation"
