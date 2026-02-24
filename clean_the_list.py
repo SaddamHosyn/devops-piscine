@@ -42,19 +42,20 @@
 
 # START YOUR CODE BELOW THIS LINE:
 def clean_list(shopping_list):
-    # Rule: If input is empty, return empty list
     if not shopping_list:
         return []
 
-    # Rule: Add 'milk' if not present (before formatting)
-    if "milk" not in shopping_list:
+    # Create a 'cleaned' version of the list just to check for milk
+    # This removes spaces and makes everything lowercase
+    normalized_list = [item.strip().lower() for item in shopping_list]
+
+    # Rule: Add 'milk' if it's not present (even if it was messy like '  MiLk  ')
+    if "milk" not in normalized_list:
         shopping_list.append("milk")
     
     cleaned_final = []
     
-    # Rule: Index starting from 1 + formatting
     for index, item in enumerate(shopping_list, start=1):
-        # Rule: Strip spaces and Capitalize only first letter
         cleaned_item = item.strip().capitalize()
         formatted_item = f"{index}/ {cleaned_item}"
         cleaned_final.append(formatted_item)
