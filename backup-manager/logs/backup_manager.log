@@ -1,0 +1,12 @@
+[02/03/2026 15:11] Schedule created: test;15:15;backup_test
+[02/03/2026 15:15] Schedules listed
+[02/03/2026 15:29] Schedule created: test;15:30;backup_test
+[02/03/2026 15:29] Schedules listed
+[02/03/2026 15:32] Error: backup_service already running
+[02/03/2026 15:45] Backup service stopped
+[02/03/2026 15:45] Service started
+[02/03/2026 15:59] Error: backup_service already running
+[02/03/2026 16:08] Schedule created: test;16:10;backup_now
+[02/03/2026 16:18] Schedules listed
+[02/03/2026 16:21] Backups listed
+[02/03/2026 16:21] Backup service stopped
